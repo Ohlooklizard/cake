@@ -35,16 +35,16 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 100px;
+      width: 300px;
       height: auto;
       cursor: pointer;
       z-index: 20;
     }
 
-    .bottom-left-button {
+    .bottom-right-button {
       position: fixed;
       bottom: 35px;
-      left: 40px;
+      right: 40px;
       width: 100px;
       height: auto;
       cursor: pointer;
@@ -80,9 +80,9 @@
 
   <audio id="moosicAudio" src="moosic.mp3" loop></audio>
 
-  <img id="cakeButton" src="click.JPG" alt="Cake Button" class="middle-button">
+  <img id="cakeButton" src="click.PNG" alt="Cake Button" class="middle-button">
 
-  <img id="exitButton" src="exit.JPG" alt="Exit Button" class="bottom-left-button">
+  <img id="exitButton" src="exit.PNG" alt="Exit Button" class="bottom-right-button">
 
   <script>
     const moosicAudio = document.getElementById("moosicAudio");
@@ -115,7 +115,7 @@
 
     cakeButton.addEventListener("click", () => {
       cakeShown = !cakeShown;
-      cakeButton.src = cakeShown ? "cake.jpg" : "click.JPG";
+      cakeButton.src = cakeShown ? "cake.PNG" : "click.PNG";
     });
 
     exitButton.addEventListener("click", () => {
