@@ -13,7 +13,7 @@
       min-height: 100vh;
       font-family: Arial, sans-serif;
       color: white;
-      background-image: url("background1.jpg");
+      background-image: url("background.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -30,12 +30,12 @@
       z-index: 20;
     }
 
-          .cake-button { -0------------------add button 
+          .middle-button  /* cake button */
       position: fixed;
-      bottom: 20%;
-      left: 35px;
+      bottom: 50%;
+      left: 50%;
       transform: translateY(-50%);
-      width: 60px;
+      width: 100px;
       height: auto;
       cursor: pointer;
       z-index: 20;
@@ -57,6 +57,17 @@
       height: 100%;
       object-fit: cover;
     }
+
+          .bottom-right-button { /* leave button */
+      position: fixed;
+      top: 35px;
+      right: 40px;
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+      z-index: 20;
+    }
+      
   </style>
 </head>
 
@@ -66,30 +77,47 @@
   </div>
 
     <img id="gladosButton" src="glados.png" alt="GLaDOS Button" class="glados-button">
-    
     <audio id="gladosAudio" src="glados.mp3"></audio>
+    
+      <audio id="moosicAudio" src="moosic.mp3" loop></audio>
 
-      <audio id="bestdogAudio" src="bestdog.mp3" loop></audio>
+    <img id="cakeButton" src="click.JPG" alt="Cake Button" class="middle-button" />
+    toggle
+  <img id="exitButton" src="leave.JPG" alt="Exit Button" class="bottom-right-button" />
+   
+    
 
      <script>
 
-     const bestdogAudio = document.getElementById("bestdogAudio");
+     const moosicAudio = document.getElementById("moosicAudio");
 
-        function startBestdogAudio() {
-      bestdogAudio.volume = 0.35;
-      bestdogAudio.play().catch(() => {});
+        function startmoosicAudio() {
+      moosicAudio.volume = 0.35;
+      moosicAudio.play().catch(() => {});
     }
 
-    window.addEventListener("load", startBestdogAudio);
+    window.addEventListener("load", startmoosicAudio);
 
     ["click", "keydown"].forEach(eventName => {
-      document.addEventListener(eventName, startBestdogAudio, { once: true });
+      document.addEventListener(eventName, startmoosicAudio, { once: true });
     });
 
          function closeLoadingScreen() {
       document.getElementById("loadingScreen").style.display = "none";
-      startBestdogAudio();
+      startmoosicAudio();
     }
+
+        document.getElementById("cakeButton").addEventListener("click", () => {
+      const cakeButton = document.getElementById("bucketButton");
+
+      click = !cake;
+      cakeButton.src = cake ? "click.JPG" : "cake.JPG";
+
+    });
+
+       When middle button is pusheed it changes from click.JPG to cake.JPG
+
+       When bottom-right-button is clicked = "https://ohlooklizard.github.io/outside/";
   </script>
 </body>
 </html>
