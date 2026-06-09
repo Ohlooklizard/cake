@@ -108,11 +108,21 @@
       document.addEventListener(eventName, startmoosicAudio, { once: true });
     });
 
-    gladosButton.addEventListener("click", () => {
-      gladosAudio.currentTime = 0;
-      gladosAudio.play();
-    });
+  let cakeRevealed = false;
 
+gladosButton.addEventListener("click", () => {
+  gladosAudio.currentTime = 0;
+  gladosAudio.play();
+
+  if (!cakeRevealed) {
+    cakeRevealed = true;
+
+    setTimeout(() => {
+      cakeButton.style.display = "block";
+    }, 5000);
+  }
+});
+    
     cakeButton.addEventListener("click", () => {
       cakeShown = !cakeShown;
       cakeButton.src = cakeShown ? "cake.PNG" : "click.PNG";
