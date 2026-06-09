@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cake</title>
 
-    <style>
+  <style>
     * { box-sizing: border-box; }
 
     body {
@@ -20,7 +20,7 @@
       overflow: hidden;
     }
 
-        .glados-button {
+    .glados-button {
       position: fixed;
       top: 35px;
       left: 40px;
@@ -30,18 +30,28 @@
       z-index: 20;
     }
 
-          .middle-button  /* cake button */
+    .middle-button {
       position: fixed;
-      bottom: 50%;
+      top: 50%;
       left: 50%;
-      transform: translateY(-50%);
+      transform: translate(-50%, -50%);
       width: 100px;
       height: auto;
       cursor: pointer;
       z-index: 20;
     }
-      
-  #loadingScreen {
+
+    .bottom-left-button {
+      position: fixed;
+      bottom: 35px;
+      left: 40px;
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    #loadingScreen {
       position: fixed;
       top: 0;
       left: 0;
@@ -57,43 +67,39 @@
       height: 100%;
       object-fit: cover;
     }
-
-          .bottom-right-button { /* leave button */
-      position: fixed;
-      top: 35px;
-      right: 40px;
-      width: 100px;
-      height: auto;
-      cursor: pointer;
-      z-index: 20;
-    }
-      
   </style>
 </head>
 
-  <body>
+<body>
   <div id="loadingScreen" onclick="closeLoadingScreen()">
     <img src="loading.jpg" alt="Loading Screen">
   </div>
 
-    <img id="gladosButton" src="glados.png" alt="GLaDOS Button" class="glados-button">
-    <audio id="gladosAudio" src="glados.mp3"></audio>
-    
-      <audio id="moosicAudio" src="moosic.mp3" loop></audio>
+  <img id="gladosButton" src="glados.png" alt="GLaDOS Button" class="glados-button">
+  <audio id="gladosAudio" src="glados.mp3"></audio>
 
-    <img id="cakeButton" src="click.JPG" alt="Cake Button" class="middle-button" />
-    toggle
-  <img id="exitButton" src="leave.JPG" alt="Exit Button" class="bottom-right-button" />
-   
-    
+  <audio id="moosicAudio" src="moosic.mp3" loop></audio>
 
-     <script>
+  <img id="cakeButton" src="click.JPG" alt="Cake Button" class="middle-button">
 
-     const moosicAudio = document.getElementById("moosicAudio");
+  <img id="exitButton" src="exit.JPG" alt="Exit Button" class="bottom-left-button">
 
-        function startmoosicAudio() {
+  <script>
+    const moosicAudio = document.getElementById("moosicAudio");
+    const gladosAudio = document.getElementById("gladosAudio");
+    const cakeButton = document.getElementById("cakeButton");
+    const exitButton = document.getElementById("exitButton");
+
+    let cakeShown = false;
+
+    function startmoosicAudio() {
       moosicAudio.volume = 0.35;
       moosicAudio.play().catch(() => {});
+    }
+
+    function closeLoadingScreen() {
+      document.getElementById("loadingScreen").style.display = "none";
+      startmoosicAudio();
     }
 
     window.addEventListener("load", startmoosicAudio);
@@ -102,25 +108,19 @@
       document.addEventListener(eventName, startmoosicAudio, { once: true });
     });
 
-         function closeLoadingScreen() {
-      document.getElementById("loadingScreen").style.display = "none";
-      startmoosicAudio();
-    }
-
-        document.getElementById("cakeButton").addEventListener("click", () => {
-      const cakeButton = document.getElementById("bucketButton");
-
-      click = !cake;
-      cakeButton.src = cake ? "click.JPG" : "cake.JPG";
-
+    gladosButton.addEventListener("click", () => {
+      gladosAudio.currentTime = 0;
+      gladosAudio.play();
     });
 
-       When middle button is pushed it changes from click.JPG to cake.jpg
+    cakeButton.addEventListener("click", () => {
+      cakeShown = !cakeShown;
+      cakeButton.src = cakeShown ? "cake.jpg" : "click.JPG";
+    });
 
-       When bottom-right-button is clicked = "https://ohlooklizard.github.io/outside/";
+    exitButton.addEventListener("click", () => {
+      window.location.href = "https://ohlooklizard.github.io/outside/";
+    });
   </script>
 </body>
 </html>
-    
-    
-      
