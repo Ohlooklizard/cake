@@ -82,7 +82,7 @@
   <audio id="moosicAudio" src="moosic.mp3" loop></audio>
 
   <img id="cakeButton" src="click.PNG" alt="Cake Button" class="middle-button">
-  <audio id="cakeAudio" src="tada.mp3"></audio>
+  <audio id="tadaAudio" src="tada.mp3"></audio>
   
   <img id="exitButton" src="exit.PNG" alt="Exit Button" class="bottom-right-button">
 
@@ -91,6 +91,7 @@
     const gladosAudio = document.getElementById("gladosAudio");
     const cakeButton = document.getElementById("cakeButton");
     const exitButton = document.getElementById("exitButton");
+    const tadaAudio = document.getElementById("tadaAudio");
 
     let cakeShown = false;
 
@@ -130,17 +131,13 @@ gladosButton.addEventListener("click", () => {
       cakeButton.src = cakeShown ? "cake.PNG" : "click.PNG";
     });
 
-      document.getElementById("cakeButton").addEventListener("click", () => {
-      const cakeButton = document.getElementById("cakeButton");
-      const cakeAudio = document.getElementById("tadaAudio");
+  cakeButton.addEventListener("click", () => {
+  tadaAudio.currentTime = 0;
+  tadaAudio.play();
 
-      bucketHasHat = !bucketHasHat;
-      bucketButton.src = bucketHasHat ? "buckethat.jpg" : "bucket.jpg";
-
-      bucketAudio.currentTime = 0;
-      bucketAudio.play();
-    });
-
+  cakeButton.src = "cake.PNG";
+});
+    
     exitButton.addEventListener("click", () => {
       window.location.href = "https://ohlooklizard.github.io/outside/";
     });
